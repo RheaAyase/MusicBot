@@ -718,6 +718,10 @@ class MusicBot(discord.Client):
                 print("Owner not found in a voice channel, could not autosummon.")
 
         print()
+
+        for vc in self.the_voice_clients.copy().values():
+            await self.reconnect_voice_client(vc.channel.server)
+
         # t-t-th-th-that's all folks!
 
     async def cmd_help(self, command=None):
